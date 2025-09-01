@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ditte Helene Andersen</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #626851d4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .card {
+        background: #f8f4ea;
+        border-radius: 20px;
+        padding: 30px;
+        width: 800px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        font-family: "Comfortaa", cursive;
+        text-align: center;
+        color: #323e37;
+        margin-bottom: 30px;
+      }
+
+      .profile-img {
+        width: 500px;
+        height: auto;
+        border-radius: 20px;
+        object-fit: cover;
+        display: block;
+        margin: 0 auto 20px;
+
+        opacity: 0;
+        transform: translateX(0);
+        transition: opacity 900ms ease, transform 900ms ease;
+        will-change: transform, opacity;
+      }
+
+      .slide-left {
+        transform: translateX(-100px);
+      }
+      .slide-right {
+        transform: translateX(100px);
+      }
+
+      .show {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .profile-img {
+          transition: none;
+          opacity: 1;
+          transform: none;
+        }
+        .slide-left,
+        .slide-right {
+          transform: none;
+        }
+      }
+
+      .section {
+        background: #aaafa0;
+        border-radius: 15px;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+      }
+
+      .section h1 {
+        margin-top: 0;
+        font-size: 1.2em;
+        color: #323e37;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      .contact p {
+        margin: 5px 0;
+      }
+
+      .social-icons {
+        margin-top: 10px;
+      }
+
+      .social-icons a {
+        margin-right: 15px;
+        font-size: 1.5em;
+        color: #323e37;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .social-icons a:hover {
+        color: #617e6d;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Ditte Helene Andersen</h1>
+
+      <img src="Ditte.webp" alt="Mit billede" class="profile-img slide-left" />
+
+      <div class="section">
+        <blockquote><h1>Om mig</h1></blockquote>
+        <p>
+          Hej! Mit navn er Ditte, jeg er 26 år gammel. Jeg har boet i København
+          i 6 år, men er oprindeligt fra Svendborg på Sydfyn.
+        </p>
+
+        <p>
+          Jeg har arbejdet i restaurationsbranchen i mange år og arbejder i
+          øjeblikket på Gasoline Grill – så hvis I har lyst til at smage en af
+          Københavns (måske) bedste burgere, må I endelig kigge forbi.
+        </p>
+
+        <p>
+          Jeg har altid været meget kreativ og har igennem årene eksperimenteret
+          med forskellige grafiske programmer som Illustrator, InDesign og flere
+          andre. Jeg vil nok beskrive mig selv som intuitivt kreativ, og det er
+          netop derfor, jeg har valgt MMD. Jeg er sikker på, at det passer
+          perfekt til min måde at arbejde på og til min nysgerrighed for, hvad
+          studiet kan tilbyde.
+        </p>
+      </div>
+
+      <div class="section">
+        <blockquote><h1>Mine interesser</h1></blockquote>
+
+        <ul>
+          <li>Intuitivt Kreativ</li>
+          <li>Grafisk design</li>
+          <li>Socialisere/drikke øl</li>
+          <li>Min cykel</li>
+        </ul>
+      </div>
+
+      <img src="Billede2Jpg.webp" alt="Hobby" class="profile-img slide-right" />
+
+      <div class="section contact">
+        <blockquote><h1>Kontakt</h1></blockquote>
+
+        <p>Email: dian1001@stud.ek.dk</p>
+        <p>Telefon: 24 40 42 22</p>
+
+        <div class="social-icons">
+          <a href="https://www.instagram.com/bandutten_" target="_blank"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="https://www.facebook.com/Ditteheleneandersen" target="_blank"
+            ><i class="fab fa-facebook"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const targets = document.querySelectorAll(".profile-img");
+      const observer = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+              obs.unobserve(entry.target); // kun én gang
+            }
+          });
+        },
+        { root: null, rootMargin: "0px 0px -10% 0px", threshold: 0.2 }
+      );
+
+      targets.forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
